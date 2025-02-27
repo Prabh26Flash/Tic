@@ -4,6 +4,17 @@ let currentPlayer = "X";
 let arr = Array(9).fill(null);
 // console.log(arr);
 
+winningCase = [
+  (0, 1, 2),
+  (3, 4, 5),
+  (6, 7, 8),
+  (0, 3, 6),
+  (1, 4, 7),
+  (2, 5, 8),
+  (0, 4, 8),
+  (2, 4, 6),
+];
+
 function checkWinner() {
   if (
     (arr[0] !== null && arr[0] === arr[1] && arr[1] === arr[2]) ||
@@ -34,6 +45,7 @@ function handleClick(el) {
   }
   arr[id] = currentPlayer;
   el.innerText = currentPlayer;
+  el.classList.add(currentPlayer.toLowerCase());
   // currentPlayer = currentPlayer === "X" ? "O" : "X";
   checkWinner();
   if (currentPlayer === "X") {
@@ -41,6 +53,7 @@ function handleClick(el) {
   } else {
     currentPlayer = "X";
   }
+
   //   console.log(arr);
 }
 const resetButton = document.getElementById("resetButton");
