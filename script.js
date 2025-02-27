@@ -45,15 +45,19 @@ function handleClick(el) {
 }
 const resetButton = document.getElementById("resetButton");
 resetButton.addEventListener("click", function () {
-  //reload the page to reset everything
-  // arr.full(null);
-  // currentPlayer = "X";
-  // winnerMessage.innerHTML = "";
-  location.reload();
+  //reset the page to reset all values
+  arr.fill(null);
+  currentPlayer = "X";
+  winnerMessage.innerHTML = "";
+  const cells = document.querySelectorAll(".col");
+  cells.forEach((cell) => {
+    cell.innerText = "";
+    cell.style.pointerEvents = "auto";
+  });
 });
 function disableBoard() {
   const cells = document.querySelectorAll(".col");
   cells.forEach((cell) => {
-    cell.style.pointerEvent = "none";
+    cell.style.pointerEvents = "none";
   });
 }
