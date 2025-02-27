@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        /* *{
+            margin: 0;
+            box-sizing: border-box;
+        } */
         body {
             display: flex;
             justify-content: center;
@@ -15,7 +19,7 @@
         .row{
             display: flex;
             color: darkorange;
-            font-size: 30px;
+            /* font-size: 60px; */
             text-decoration: solid;
             background-color: rgb(255, 255, 255);
         }
@@ -23,17 +27,53 @@
 
             height: 90px;
             width: 90px;
-            border : 2px solid black;
+            border: 3px solid black;
             margin: 0.5px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 30px;
+            font-size: 40px;
             cursor: pointer;
         }
         .upper{
             font-size: 40px;
             color: coral;
+        }
+        /* .grid{
+            /* border: 2px solid green; */
+        button{
+            display: flex;
+            color: rgb(255, 255, 255);
+            background-color: coral;
+            border: 2px solid black;
+            height: 40px;
+            width: 100px;
+            border-radius: 5px;
+            margin: auto;
+            text-align: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 20px;
+            vertical-align: middle;
+            transition-duration: 0.5s;
+            margin-left: 94px;
+
+        }
+        button:hover{
+            cursor: pointer;
+            color: coral;
+            background-color: aliceblue;
+            transition-duration: 0.5s;
+
+        }
+        .message{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 90px;
+            color: coral;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 30px;
         }
            
     </style>
@@ -60,8 +100,13 @@
                 <div onclick="handleClick(this)" id="6" class="col"></div>
                 <div onclick="handleClick(this)" id="7" class="col"></div>
                 <div onclick="handleClick(this)" id="8" class="col"></div>
-            </div>
+            </div><br><br>
+            <button id="resetButton" >Reset</button>
         </div>
+        <div class="message" id="winnerMessage">
+          <!-- Winner message will appear here -->
+        </div>
+        
     </div>
     <script src="script.js"></script>
 </body>
