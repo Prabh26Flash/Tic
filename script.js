@@ -27,7 +27,7 @@ function checkWinner() {
   }
 
   if (!arr.some((e) => e === null)) {
-    winnerMessage.innerHTML = `This Match is Draw!`;
+    winnerMessage.innerHTML = `Match Draw!`;
     winnerMessage.style.color = "Green"; // Optional: Color for draw
   }
 }
