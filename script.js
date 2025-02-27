@@ -2,18 +2,8 @@
 
 let currentPlayer = "X";
 let arr = Array(9).fill(null);
-// console.log(arr);
 
-// winningCase = [
-//   (0, 1, 2),
-//   (3, 4, 5),
-//   (6, 7, 8),
-//   (0, 3, 6),
-//   (1, 4, 7),
-//   (2, 5, 8),
-//   (0, 4, 8),
-//   (2, 4, 6),
-// ];
+const winnerMessage = document.getElementById("winnerMessage");
 
 function checkWinner() {
   if (
@@ -27,14 +17,18 @@ function checkWinner() {
     (arr[2] !== null && arr[2] === arr[4] && arr[4] === arr[6])
   ) {
     winnerMessage.innerHTML = `Winner is ${currentPlayer} !`;
+    if (currentPlayer === "X") {
+      winnerMessage.style.color = "orange";
+    } else if (currentPlayer === "O") {
+      winnerMessage.style.color = "purple";
+    }
     disableBoard();
     return;
   }
 
   if (!arr.some((e) => e === null)) {
     winnerMessage.innerHTML = `This Match is Draw!`;
-
-    return;
+    winnerMessage.style.color = "Green"; // Optional: Color for draw
   }
 }
 
@@ -43,31 +37,38 @@ function handleClick(el) {
   if (arr[id] !== null) {
     return;
   }
+  // arr[id] = currentPlayer;
+  // el.innerText = currentPlayer;
   arr[id] = currentPlayer;
   el.innerText = currentPlayer;
   el.classList.add(currentPlayer.toLowerCase());
-  // currentPlayer = currentPlayer === "X" ? "O" : "X";
-  checkWinner();
+  el.style.fontWeight = "bold";
+
+  // Ensure consistent color for X and O
   if (currentPlayer === "X") {
-    currentPlayer = "O";
-  } else {
-    currentPlayer = "X";
+    el.style.color = "orange";
+  } else if (currentPlayer === "O") {
+    el.style.color = "purple";
   }
 
-  //   console.log(arr);
+  checkWinner();
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
 }
+
 const resetButton = document.getElementById("resetButton");
 resetButton.addEventListener("click", function () {
-  //reset the page to reset all values
   arr.fill(null);
   currentPlayer = "X";
   winnerMessage.innerHTML = "";
+  winnerMessage.style.color = "black";
   const cells = document.querySelectorAll(".col");
   cells.forEach((cell) => {
     cell.innerText = "";
+    cell.style.color = ""; // Clear color to prevent conflicts
     cell.style.pointerEvents = "auto";
   });
 });
+
 function disableBoard() {
   const cells = document.querySelectorAll(".col");
   cells.forEach((cell) => {
