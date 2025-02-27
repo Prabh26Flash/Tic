@@ -15,12 +15,14 @@ function checkWinner() {
     (arr[0] !== null && arr[0] === arr[4] && arr[4] === arr[8]) ||
     (arr[2] !== null && arr[2] === arr[4] && arr[4] === arr[6])
   ) {
-    document.write(`Winner is ${currentPlayer}`);
+    winnerMessage.innerHTML = `Winner is ${currentPlayer} !`;
+    disableBoard();
     return;
   }
 
   if (!arr.some((e) => e === null)) {
-    document.write(`This match is Draw!!`);
+    winnerMessage.innerHTML = `This Match is Draw!`;
+
     return;
   }
 }
@@ -40,4 +42,18 @@ function handleClick(el) {
     currentPlayer = "X";
   }
   //   console.log(arr);
+}
+const resetButton = document.getElementById("resetButton");
+resetButton.addEventListener("click", function () {
+  //reload the page to reset everything
+  // arr.full(null);
+  // currentPlayer = "X";
+  // winnerMessage.innerHTML = "";
+  location.reload();
+});
+function disableBoard() {
+  const cells = document.querySelectorAll(".col");
+  cells.forEach((cell) => {
+    cell.style.pointerEvent = "none";
+  });
 }
